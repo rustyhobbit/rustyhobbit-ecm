@@ -2,8 +2,8 @@
 """
 Purpose:
 
-    An ECM pilot can quickly determine which ECM jammers to fit and activate for
-    a fight.
+    A python script for an ECM pilot to quickly determine which ECM jammers to
+    fit and activate in a fight.
 
 Syntax:
 
