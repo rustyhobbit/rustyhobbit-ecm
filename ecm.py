@@ -104,15 +104,15 @@ def main ():
 
     # Create a namedtuple - very useful because you can 
     # use dot notation (obj.attr) to reference csv fields
-    ShipRecord = collections.namedtuple('ShipRecord', ['ship','ship_class','ecm_race','ecm_priority','alt_name_1','alt_name_2'])
+    ShipRecord = collections.namedtuple('ShipRecord', ['ship','ship_class','ecm_race','ecm_priority','alt_name_1','alt_name_2','notes'])
 
     # load data from csv file
     shipdata = csv.reader(open('ecm.csv', 'rb'))
-    for ship, ship_class, ecm_race, ecm_priority, alt_name_1, alt_name_2 in shipdata:
+    for ship, ship_class, ecm_race, ecm_priority, alt_name_1, alt_name_2, notes in shipdata:
         if line > 1: # don't include the header (line 1)
 
             # create a namedtuple of the ship record
-            ship_record = ShipRecord(ship, ship_class, ecm_race, ecm_priority, alt_name_1, alt_name_2)
+            ship_record = ShipRecord(ship, ship_class, ecm_race, ecm_priority, alt_name_1, alt_name_2, notes)
 
             #append ship_record to the list
             all_records.append(ship_record)
@@ -175,7 +175,7 @@ def main ():
         else:
             jammer_to_use = "Unknown - No ECM Race"
             
-        print ("{:>2} {:<25} ({:<25}) {:<10} {:<15}".format(ship_record.ecm_priority, ship_record.ship, jammer_to_use, ship_record.ecm_race, ship_record.ship_class))
+        print ("{:>2} {:<25} ({:<25}) {:<10} {:<15} {:<20}".format(ship_record.ecm_priority, ship_record.ship, jammer_to_use, ship_record.ecm_race, ship_record.ship_class, ship_record.notes))
 
     print ""
 
